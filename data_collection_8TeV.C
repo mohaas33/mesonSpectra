@@ -274,10 +274,10 @@ void data_collection_8TeV(){
         pval[data][0][bin] = p720[bin];
         pval[data][1][bin] = p721[bin];
         pval[data][2][bin] = p722[bin];
-        pval[data][3][bin] = p723[bin];//*(p701[bin]-p700[bin]);
-        pval[data][4][bin] = p724[bin];//*(p701[bin]-p700[bin]);
-        pval[data][5][bin] = p725[bin];//*(p701[bin]-p700[bin]);
-        pval[data][6][bin] = p726[bin];//*(p701[bin]-p700[bin]);
+        pval[data][3][bin] = p723[bin];//*(p721[bin]-p720[bin]);
+        pval[data][4][bin] = p724[bin];//*(p721[bin]-p720[bin]);
+        pval[data][5][bin] = p725[bin];//*(p721[bin]-p720[bin]);
+        pval[data][6][bin] = p726[bin];//*(p721[bin]-p720[bin]);
     }
     data = 9;
     experiment[data] = 3;
@@ -297,10 +297,10 @@ void data_collection_8TeV(){
         pval[data][0][bin] = p730[bin];
         pval[data][1][bin] = p731[bin];
         pval[data][2][bin] = p732[bin];
-        pval[data][3][bin] = p733[bin];//*(p701[bin]-p700[bin]);
-        pval[data][4][bin] = p734[bin];//*(p701[bin]-p700[bin]);
-        pval[data][5][bin] = p735[bin];//*(p701[bin]-p700[bin]);
-        pval[data][6][bin] = p736[bin];//*(p701[bin]-p700[bin]);
+        pval[data][3][bin] = p733[bin];//*(p731[bin]-p730[bin]);
+        pval[data][4][bin] = p734[bin];//*(p731[bin]-p730[bin]);
+        pval[data][5][bin] = p735[bin];//*(p731[bin]-p730[bin]);
+        pval[data][6][bin] = p736[bin];//*(p731[bin]-p730[bin]);
     }
 
     //P P --> UPSI(2S) X | P P --> MU+ MU- X
@@ -323,10 +323,10 @@ void data_collection_8TeV(){
         pval[data][0][bin] = p820[bin];
         pval[data][1][bin] = p821[bin];
         pval[data][2][bin] = p822[bin];
-        pval[data][3][bin] = p823[bin];//*(p701[bin]-p700[bin]);
-        pval[data][4][bin] = p824[bin];//*(p701[bin]-p700[bin]);
-        pval[data][5][bin] = p825[bin];//*(p701[bin]-p700[bin]);
-        pval[data][6][bin] = p826[bin];//*(p701[bin]-p700[bin]);
+        pval[data][3][bin] = p823[bin];//*(p821[bin]-p820[bin]);
+        pval[data][4][bin] = p824[bin];//*(p821[bin]-p820[bin]);
+        pval[data][5][bin] = p825[bin];//*(p821[bin]-p820[bin]);
+        pval[data][6][bin] = p826[bin];//*(p821[bin]-p820[bin]);
     }
 
     data = 11;
@@ -347,10 +347,10 @@ void data_collection_8TeV(){
         pval[data][0][bin] = p830[bin];
         pval[data][1][bin] = p831[bin];
         pval[data][2][bin] = p832[bin];
-        pval[data][3][bin] = p833[bin];//*(p701[bin]-p700[bin]);
-        pval[data][4][bin] = p834[bin];//*(p701[bin]-p700[bin]);
-        pval[data][5][bin] = p835[bin];//*(p701[bin]-p700[bin]);
-        pval[data][6][bin] = p836[bin];//*(p701[bin]-p700[bin]);
+        pval[data][3][bin] = p833[bin];//*(p831[bin]-p830[bin]);
+        pval[data][4][bin] = p834[bin];//*(p831[bin]-p830[bin]);
+        pval[data][5][bin] = p835[bin];//*(p831[bin]-p830[bin]);
+        pval[data][6][bin] = p836[bin];//*(p831[bin]-p830[bin]);
     }
 
     //P P --> UPSI(3S) X | P P --> MU+ MU- X
@@ -372,10 +372,10 @@ void data_collection_8TeV(){
         pval[data][0][bin] = p920[bin];
         pval[data][1][bin] = p921[bin];
         pval[data][2][bin] = p922[bin];
-        pval[data][3][bin] = p923[bin];//*(p701[bin]-p700[bin]);
-        pval[data][4][bin] = p924[bin];//*(p701[bin]-p700[bin]);
-        pval[data][5][bin] = p925[bin];//*(p701[bin]-p700[bin]);
-        pval[data][6][bin] = p926[bin];//*(p701[bin]-p700[bin]);
+        pval[data][3][bin] = p923[bin];//*(p921[bin]-p920[bin]);
+        pval[data][4][bin] = p924[bin];//*(p921[bin]-p920[bin]);
+        pval[data][5][bin] = p925[bin];//*(p921[bin]-p920[bin]);
+        pval[data][6][bin] = p926[bin];//*(p921[bin]-p920[bin]);
     }
 
     data = 12;
@@ -395,10 +395,10 @@ void data_collection_8TeV(){
         pval[data][0][bin] = p930[bin];
         pval[data][1][bin] = p931[bin];
         pval[data][2][bin] = p932[bin];
-        pval[data][3][bin] = p933[bin];//*(p701[bin]-p700[bin]);
-        pval[data][4][bin] = p934[bin];//*(p701[bin]-p700[bin]);
-        pval[data][5][bin] = p935[bin];//*(p701[bin]-p700[bin]);
-        pval[data][6][bin] = p936[bin];//*(p701[bin]-p700[bin]);
+        pval[data][3][bin] = p933[bin];//*(p931[bin]-p930[bin]);
+        pval[data][4][bin] = p934[bin];//*(p931[bin]-p930[bin]);
+        pval[data][5][bin] = p935[bin];//*(p931[bin]-p930[bin]);
+        pval[data][6][bin] = p936[bin];//*(p931[bin]-p930[bin]);
     }
     //Write 
     int set,ndp,exp,ptype;
