@@ -23,14 +23,13 @@ def get_data(fileName, firstH=0, firstR=0, lastR=1, p=0):
     rows = get_rows(fileName, firstH, firstR, lastR, p)
 
     #data = np.array([row.strip().split(',') for row in rows],dtype=float)
-    data = np.array([row.strip().split(',') for row in rows])
-    for ir,row in enumerate(rows):
-        row_array = row.strip().split(',')
-        for iw,w in enumerate(row_array):
-            if w=='-':
-               data[ir][iw] = 0# np.nan
-            else:
-                data[ir][iw] = float(w)
+    data = []#np.array([row.strip().split(',') for row in rows])
+    for row in rows:
+        if '-,' in row:
+            continue
+        else:
+            row_array = np.array(row.strip().split(','),dtype=float)
+            data.append(row_array) 
     p2e = []
     p2e .append(np.array([d[1] for d in data],dtype=float) )#0 low pT bin edge;  
     p2e .append(np.array([d[2] for d in data],dtype=float) )#1 high pT bin edge;  
@@ -69,7 +68,7 @@ def print_first_lines(data , experiment, particle_type, particle_mass, rapidity_
 
 
 
-nPlots = 13
+nPlots = 14
 
 data_points = [0 for i  in range(nPlots)]
 experiment = [0 for i in range(nPlots)]
@@ -204,7 +203,7 @@ print_first_lines(data ,experiment[data] ,particle_type[data] ,particle_mass[dat
 data_points[data] = get_data('./store/HEPData-ins1392456-v1-Table_12.csv', 44, 47, 76, 0) # 2s 3<y<3.5
 
 #P P --> UPSI(3S) X | P P --> MU+ MU- X
-data = 11
+data = 12
 experiment[data] = 3
 particle_type[data] = 200553
 particle_mass[data] = 10.3552
@@ -213,7 +212,7 @@ rapidity_high[data] = 2.5
 print_first_lines(data ,experiment[data] ,particle_type[data] ,particle_mass[data] ,rapidity_low[data]  ,rapidity_high[data] )
 data_points[data] = get_data('./store/HEPData-ins1392456-v1-Table_12.csv', 0, 13, 42, 0) # 3s 2.5<y<3
 
-data = 12
+data = 13
 experiment[data] = 3
 particle_type[data] = 200553
 particle_mass[data] = 10.3552
