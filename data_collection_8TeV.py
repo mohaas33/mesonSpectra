@@ -22,7 +22,15 @@ def get_rows(fileName, firstH=0, firstR=0, lastR=1, p=0):
 def get_data(fileName, firstH=0, firstR=0, lastR=1, p=0):
     rows = get_rows(fileName, firstH, firstR, lastR, p)
 
-    data = np.array([row.strip().split(',') for row in rows],dtype=float)
+    #data = np.array([row.strip().split(',') for row in rows],dtype=float)
+    data = np.array([row.strip().split(',') for row in rows])
+    for ir,row in enumerate(rows):
+        row_array = row.strip().split(',')
+        for iw,w in enumerate(row_array):
+            if w=='-':
+               data[ir][iw] = 0# np.nan
+            else:
+                data[ir][iw] = float(w)
     p2e = []
     p2e .append(np.array([d[1] for d in data],dtype=float) )#0 low pT bin edge;  
     p2e .append(np.array([d[2] for d in data],dtype=float) )#1 high pT bin edge;  
@@ -61,9 +69,8 @@ def print_first_lines(data , experiment, particle_type, particle_mass, rapidity_
 
 
 
-nPlots = 8
+nPlots = 13
 
-# https://www.hepdata.net/record/ins1230344 J/Psi and Upsilon 1s/2s/3s double-differential cross sections 
 data_points = [0 for i  in range(nPlots)]
 experiment = [0 for i in range(nPlots)]
 particle_type = [0 for i in range(nPlots)]
@@ -71,6 +78,7 @@ particle_mass = [0 for i in range(nPlots)]
 rapidity_low = [0 for i in range(nPlots)]
 rapidity_high = [0 for i in range(nPlots)]
 
+# https://www.hepdata.net/record/ins1230344 J/Psi and Upsilon 1s/2s/3s double-differential cross sections 
 #P P --> J/PSI X 2.5<y<3
 print('\n \n \n//P P --> J/PSI X 2.5<y<3')
 data = 0
@@ -153,6 +161,67 @@ rapidity_high[data] = 3.5
 print_first_lines(data ,experiment[data] ,particle_type[data] ,particle_mass[data] ,rapidity_low[data]  ,rapidity_high[data] )
 data_points[data] = get_data('./store/HEPData-ins1230344-v1-Table_12_Y.csv', 48, 53, 68, 0) # 3s 3<y<3.5
 
+print('===============================================================================================')
+print('https://www.hepdata.net/record/ins1392456 Upsilon 1s/2s/3s double-differential cross sections')
+# https://www.hepdata.net/record/ins1392456 Upsilon 1s/2s/3s double-differential cross sections 
+
+#P P --> UPSI(1S) X | P P --> MU+ MU- X
+data = 8
+experiment[data] = 3
+particle_type[data] = 553
+particle_mass[data] = 9.4603
+rapidity_low[data]  = 2.0
+rapidity_high[data] = 2.5
+print_first_lines(data ,experiment[data] ,particle_type[data] ,particle_mass[data] ,rapidity_low[data]  ,rapidity_high[data] )
+data_points[data] = get_data('./store/HEPData-ins1392456-v1-Table_11.csv', 0, 13, 42, 0) # 1s 2.5<y<3
+
+data = 9
+experiment[data] = 3
+particle_type[data] = 553
+particle_mass[data] = 9.4603
+rapidity_low[data]  = 2.5
+rapidity_high[data] = 3.0
+print_first_lines(data ,experiment[data] ,particle_type[data] ,particle_mass[data] ,rapidity_low[data]  ,rapidity_high[data] )
+data_points[data] = get_data('./store/HEPData-ins1392456-v1-Table_11.csv', 44, 47, 76, 0) # 1s 3<y<3.5
+
+#P P --> UPSI(2S) X | P P --> MU+ MU- X
+data = 10
+experiment[data] = 3
+particle_type[data] = 100553
+particle_mass[data] = 10.02326
+rapidity_low[data]  = 2.0
+rapidity_high[data] = 2.5
+print_first_lines(data ,experiment[data] ,particle_type[data] ,particle_mass[data] ,rapidity_low[data]  ,rapidity_high[data] )
+data_points[data] = get_data('./store/HEPData-ins1392456-v1-Table_12.csv', 0, 13, 42, 0) # 2s 2.5<y<3
+
+data = 11
+experiment[data] = 3
+particle_type[data] = 100553
+particle_mass[data] = 10.02326
+rapidity_low[data]  = 2.5
+rapidity_high[data] = 3.0
+print_first_lines(data ,experiment[data] ,particle_type[data] ,particle_mass[data] ,rapidity_low[data]  ,rapidity_high[data] )
+data_points[data] = get_data('./store/HEPData-ins1392456-v1-Table_12.csv', 44, 47, 76, 0) # 2s 3<y<3.5
+
+#P P --> UPSI(3S) X | P P --> MU+ MU- X
+data = 11
+experiment[data] = 3
+particle_type[data] = 200553
+particle_mass[data] = 10.3552
+rapidity_low[data]  = 2.0
+rapidity_high[data] = 2.5
+print_first_lines(data ,experiment[data] ,particle_type[data] ,particle_mass[data] ,rapidity_low[data]  ,rapidity_high[data] )
+data_points[data] = get_data('./store/HEPData-ins1392456-v1-Table_12.csv', 0, 13, 42, 0) # 3s 2.5<y<3
+
+data = 12
+experiment[data] = 3
+particle_type[data] = 200553
+particle_mass[data] = 10.3552
+rapidity_low[data]  = 2.5
+rapidity_high[data] = 3.0
+print_first_lines(data ,experiment[data] ,particle_type[data] ,particle_mass[data] ,rapidity_low[data]  ,rapidity_high[data] )
+data_points[data] = get_data('./store/HEPData-ins1392456-v1-Table_12.csv', 44, 47, 76, 0) # 3s 3<y<3.5
+
 # Writing the File
 
 nPlots = data+1
@@ -211,6 +280,7 @@ for i in range(len(data_points)):
 
     #arrays
     pval = data_points[i]
+    #print(pval[0])
     ndp[0] = len(pval[0])
     ndp_all[i] = ndp[0]
     #print(pval[0])
