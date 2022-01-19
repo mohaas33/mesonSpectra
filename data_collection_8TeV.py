@@ -334,7 +334,7 @@ particle_mass[data] = 0.1349768
 rapidity_low[data]  = 0
 rapidity_high[data] = 4.0
 print_first_lines(data ,experiment[data] ,particle_type[data] ,particle_mass[data] ,rapidity_low[data]  ,rapidity_high[data] )
-print('br_pi = 98.823')
+print('\tfloat br_pi = 98.823;')
 data_points[data] = get_data('./store/HEPData-ins1620477-v2-Table_1.csv', 0, 13, 57, 0) 
 print_last_lines()
 
@@ -346,7 +346,7 @@ particle_mass[data] = 0.1349768
 rapidity_low[data]  = 0
 rapidity_high[data] = 4.0
 print_first_lines(data ,experiment[data] ,particle_type[data] ,particle_mass[data] ,rapidity_low[data]  ,rapidity_high[data] )
-print('br_eta = 39.31')
+print('\tfloat br_eta = 39.31;')
 data_points[data] = get_data('./store/HEPData-ins1620477-v2-Table_2.csv', 0, 13, 38, 0) 
 print_last_lines()
 
