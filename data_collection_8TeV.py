@@ -80,7 +80,7 @@ def print_last_lines():
 
 
 
-nPlots = 20
+nPlots = 25
 
 data_points = [0 for i  in range(nPlots)]
 experiment = [0 for i in range(nPlots)]
@@ -351,9 +351,132 @@ data_points[data] = get_data('./store/HEPData-ins1620477-v2-Table_2.csv', 0, 13,
 print_last_lines()
 
 
+print('\n')
+print('//===============================================================================================')
+print('//https://www.hepdata.net/record/ins1762364 pT spectra of K*0 and phi.')
+#p p --> K*(892)^{0} + X
+print('//p p --> K*(892)^{0} + X | 1/Nev d^2N/(dp_Tdy) (GeV/c)^{-1}')
+
+data = 20
+experiment[data] = 2
+particle_type[data] = 313
+particle_mass[data] = 0.890
+rapidity_low[data]  = 0.0
+rapidity_high[data] = 0.5
+print_first_lines(data ,experiment[data] ,particle_type[data] ,particle_mass[data] ,rapidity_low[data]  ,rapidity_high[data] )
+data_points[data] = get_data('./store/HEPData-ins1762364-v1-Table_1.csv', 0, 11, 39, 0) 
+print_last_lines()
+
+
+#p p --> phi + X
+print('//p p --> phi + X | 1/Nev d^2N/(dp_Tdy) (GeV/c)^{-1}')
+
+data = 21
+experiment[data] = 2
+particle_type[data] = 333
+particle_mass[data] = 1.019461
+rapidity_low[data]  = 0.0
+rapidity_high[data] = 0.5
+print_first_lines(data ,experiment[data] ,particle_type[data] ,particle_mass[data] ,rapidity_low[data]  ,rapidity_high[data] )
+data_points[data] = get_data('./store/HEPData-ins1762364-v1-Table_2.csv', 0, 11, 34, 0) 
+print_last_lines()
+
+
+print('\n')
+print('//===============================================================================================')
+print('//https://www.hepdata.net/record/ins1861688 pT spectra of phi.')
+#p p --> phi + X
+print('//p p --> phi + X |  d^2sigma/(dp_Tdy) (GeV/c)^{-1}')
+
+data = 22
+experiment[data] = 2
+particle_type[data] = 333
+particle_mass[data] = 1.019461
+rapidity_low[data]  = 2.5
+rapidity_high[data] = 4.0
+print_first_lines(data ,experiment[data] ,particle_type[data] ,particle_mass[data] ,rapidity_low[data]  ,rapidity_high[data] )
+data_points[data] = get_data('./store/HEPData-ins1861688-v1-Table_2.csv', 0, 11, 23, 0) 
+print_last_lines()
+print('1e6')
 
 
 
+#==============
+# CMS
+#==============
+print('\t//==============')
+print('\t// CMS - Did not find any 8 TeV results')
+print('\t//==============')
+
+#==============
+# ATLAS
+#==============
+print('\t//==============')
+print('\t// ATLAS')
+print('\t//==============')
+
+
+
+print('\t//===============================================================================================')
+print('\t//https://www.hepdata.net/record/ins1409298 ATLAS P P --> J/PSI(2S) ')
+#P P --> JPSI < MU+ MU- > X
+print('\n')
+print('//P P --> J/PSI < MU+ MU- > X  | D2SIG/DPT/DYRAP*BR [NB/GEV]')
+data = 23
+experiment[data] = 0
+particle_type[data] = 443
+particle_mass[data] = 3.0969
+rapidity_low[data]  = 0.
+rapidity_high[data] = 2
+print_first_lines(data ,experiment[data] ,particle_type[data] ,particle_mass[data] ,rapidity_low[data]  ,rapidity_high[data] )
+data_points[data] = get_data('./store/HEPData-ins1409298-v1-Table_2.csv', 0, 13, 37, 0) 
+get_data('./store/HEPData-ins1409298-v1-Table_2.csv', 38, 42, 66, 0) 
+print('\n')
+get_data('./store/HEPData-ins1409298-v1-Table_2.csv', 67, 71, 95, 0) 
+print('\n')
+get_data('./store/HEPData-ins1409298-v1-Table_2.csv', 96, 100, 124, 0) 
+print('\n')
+get_data('./store/HEPData-ins1409298-v1-Table_2.csv', 125, 129, 153, 0) 
+print('\n')
+get_data('./store/HEPData-ins1409298-v1-Table_2.csv', 154, 158, 182, 0) 
+print('\n')
+get_data('./store/HEPData-ins1409298-v1-Table_2.csv', 183, 187, 211, 0) 
+print('\n')
+get_data('./store/HEPData-ins1409298-v1-Table_2.csv', 212, 216, 240, 0) 
+print_last_lines()
+
+
+print('\t//===============================================================================================')
+print('\t//https://www.hepdata.net/record/ins1409298 ATLAS P P --> PSI(2S) ')
+#P P --> PSI < MU+ MU- > X
+print('\n')
+print('//P P --> PSI(2S) < MU+ MU- > X  | D2SIG/DPT/DYRAP*BR [NB/GEV]')
+data = 24
+experiment[data] = 0
+particle_type[data] = 100443
+particle_mass[data] = 3.6861
+rapidity_low[data]  = 0.
+rapidity_high[data] = 2
+print_first_lines(data ,experiment[data] ,particle_type[data] ,particle_mass[data] ,rapidity_low[data]  ,rapidity_high[data] )
+data_points[data] = get_data('./store/HEPData-ins1409298-v1-Table_6.csv', 0, 13, 37, 0) 
+get_data('./store/HEPData-ins1409298-v1-Table_6.csv', 38, 42, 66, 0) 
+print('\n')
+get_data('./store/HEPData-ins1409298-v1-Table_6.csv', 67, 71, 95, 0) 
+print('\n')
+get_data('./store/HEPData-ins1409298-v1-Table_6.csv', 96, 100, 124, 0) 
+print('\n')
+get_data('./store/HEPData-ins1409298-v1-Table_6.csv', 125, 129, 153, 0) 
+print('\n')
+get_data('./store/HEPData-ins1409298-v1-Table_6.csv', 154, 158, 182, 0) 
+print('\n')
+get_data('./store/HEPData-ins1409298-v1-Table_6.csv', 183, 187, 211, 0) 
+print('\n')
+get_data('./store/HEPData-ins1409298-v1-Table_6.csv', 212, 216, 240, 0) 
+print_last_lines()
+
+
+
+#print(len(data_points))
 
 
 # Writing the File
@@ -416,7 +539,10 @@ for i in range(len(data_points)):
     pval = data_points[i]
     #print(pval[0])
     ndp[0] = len(pval[0])
-    ndp_all[i] = ndp[0]
+    if i==23 or i==24:
+        ndp_all[i] = ndp[0]-4
+    else:
+        ndp_all[i] = ndp[0]
     #print(pval[0])
     for p in range(int(ndp[0])):
         ptl[p] = pval[0][p]
