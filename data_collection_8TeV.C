@@ -22,12 +22,11 @@ void data_collection_8TeV(){
 
     float cross = 6.02e7;
 
-    const int Nparts = 25;
+    const int Nparts = 27;
     const int Nvals = 7;
     int data;
     //                           0  1  2  3  4  5  6  7    8  9  10 11 12 13 14 15 16   17 18 19 20 21 22 23   24 25 26 27   28 29 30 31 32 33 34   35 36 37 38   39 40 41 42   43 44 45 46        47 48 49
-    int npoints[Nparts] = { 14, 14, 15, 15, 15, 15, 15, 15, 24, 25, 24, 25, 24, 25, 13, 9, 5, 2, 44, 25, 28, 23, 12, 20, 20 };
-
+    int npoints[Nparts] = { 14, 14, 15, 15, 15, 15, 15, 15, 24, 25, 24, 25, 24, 25, 13, 9, 5, 2, 44, 25, 28, 23, 12, 20, 20, 5, 5 };
 
     int   experiment[Nparts];    // ATLAS = 0, CMS = 1, ALICE = 2, LHCb = 3.
     int   particle_type[Nparts]; // accordingt to pythia
@@ -852,6 +851,67 @@ void data_collection_8TeV(){
 		pval[data][5][bin] = (p415[bin]+p425[bin]+p435[bin]+p445[bin]+p455[bin]+p465[bin]+p475[bin]+p485[bin])/8.0;
 		pval[data][6][bin] = (p416[bin]+p426[bin]+p436[bin]+p446[bin]+p456[bin]+p466[bin]+p476[bin]+p486[bin])/8.0;//*(p1[bin]-p0[bin]);
 	}
+
+	//===============================================================================================
+	//https://www.hepdata.net/record/ins1495026 Measured cross section times branching fractions as a function of pT for prompt psi(2S) and X(3872) production.
+
+
+    //P P --> PSI(2S) < MU+ MU- PI+ PI- > X  | pb / GeV
+
+
+	data = 25;
+	experiment[data] = 0;
+	particle_type[data] = 100443;
+	particle_mass[data] = 3.6861;
+	rapidity_low[data]  = 0.0;
+	rapidity_high[data] = 0.75;
+	float pico_nano = 1e-3;
+	float br_psi_2s_2mu2pi = 0.3446;
+	float p490[]={ 12.0, 16.0, 22.0, 40.0, 70.0 };
+	float p491[]={ 10.0, 12.0, 16.0, 22.0, 40.0 };
+	float p492[]={ 10.8, 13.5, 18.2, 26.6, 47.9 };
+	float p493[]={ 92.4, 27.97, 5.61, 0.57, 0.021 };
+	float p494[]={ 1.9, 0.27, 0.06, 0.01, 0.001 };
+	float p495[]={ 4.8, 1.02, 0.19, 0.02, 0.001 };
+	float p496[]={ -1.9, -0.27, -0.06, -0.01, -0.001 };
+	for (int bin = 0; bin < npoints[data]; bin++){
+		pval[data][0][bin] = p490[bin];
+		pval[data][1][bin] = p491[bin];
+		pval[data][2][bin] = p492[bin];
+		pval[data][3][bin] = p493[bin]*1./br_psi_2s_2mu2pi *pico_nano;//*(p491[bin]-p490[bin]);
+		pval[data][4][bin] = p494[bin]*1./br_psi_2s_2mu2pi *pico_nano;//*(p491[bin]-p490[bin]);
+		pval[data][5][bin] = p495[bin]*1./br_psi_2s_2mu2pi *pico_nano;//*(p491[bin]-p490[bin]);
+		pval[data][6][bin] = p496[bin]*1./br_psi_2s_2mu2pi *pico_nano;//*(p491[bin]-p490[bin]);
+	}
+
+
+    //P P --> X(3872) X  | pb / GeV
+
+
+	data = 26;
+	experiment[data] = 0;
+	particle_type[data] = 20445;
+	particle_mass[data] = 3.872;
+	rapidity_low[data]  = 0.0;
+	rapidity_high[data] = 0.75;
+	float br_X_JPsi2pi = 0.038;
+	float p4a0[]={ 12.0, 16.0, 22.0, 40.0, 70.0 };
+	float p4a1[]={ 10.0, 12.0, 16.0, 22.0, 40.0 };
+	float p4a2[]={ 10.9, 13.5, 18.2, 26.6, 47.6 };
+	float p4a3[]={ 6.05, 2.75, 0.6, 0.06, 0.003 };
+	float p4a4[]={ 1.3, 0.2, 0.04, 0.01, 0.001 };
+	float p4a5[]={ 0.38, 0.13, 0.02, 0.0, 0.0 };
+	float p4a6[]={ -1.3, -0.2, -0.04, -0.01, -0.001 };
+	for (int bin = 0; bin < npoints[data]; bin++){
+		pval[data][0][bin] = p4a0[bin];
+		pval[data][1][bin] = p4a1[bin];
+		pval[data][2][bin] = p4a2[bin];
+		pval[data][3][bin] = p4a3[bin]*1./br_X_JPsi2pi *pico_nano;//*(p4a1[bin]-p4a0[bin]);
+		pval[data][4][bin] = p4a4[bin]*1./br_X_JPsi2pi *pico_nano;//*(p4a1[bin]-p4a0[bin]);
+		pval[data][5][bin] = p4a5[bin]*1./br_X_JPsi2pi *pico_nano;//*(p4a1[bin]-p4a0[bin]);
+		pval[data][6][bin] = p4a6[bin]*1./br_X_JPsi2pi *pico_nano;//*(p4a1[bin]-p4a0[bin]);
+	}
+
 
     //Write 
     int set,ndp,exp,ptype;

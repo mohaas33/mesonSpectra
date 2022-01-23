@@ -80,7 +80,7 @@ def print_last_lines():
 
 
 
-nPlots = 25
+nPlots = 27
 
 data_points = [0 for i  in range(nPlots)]
 experiment = [0 for i in range(nPlots)]
@@ -476,7 +476,40 @@ print_last_lines()
 
 
 
+
+print('\t//===============================================================================================')
+print('\t//https://www.hepdata.net/record/ins1495026 Measured cross section times branching fractions as a function of pT for prompt psi(2S) and X(3872) production.')
+#P P --> PSI(2s) < MU+ MU- > X
+print('\n')
+print('//P P --> PSI(2S) < MU+ MU- PI+ PI- > X  | pb / GeV')
+data = 25
+experiment[data] = 0
+particle_type[data] = 100443
+particle_mass[data] = 3.6861
+rapidity_low[data]  = 0.0
+rapidity_high[data] = 0.75
+print_first_lines(data ,experiment[data] ,particle_type[data] ,particle_mass[data] ,rapidity_low[data]  ,rapidity_high[data] )
+print('\tfloat pico_nano = 1e-3;')
+print('\tfloat br_psi_2s_2mu2pi = 0.3446;')
+data_points[data] = get_data('./store/HEPData-ins1495026-v1-Table_8.csv', 0, 11, 16, 0)
+print_last_lines()
+
+#P P --> X(3872) X
+print('\n')
+print('//P P --> X(3872) X  | pb / GeV')
+data = 26
+experiment[data] = 0
+particle_type[data] = 20445
+particle_mass[data] = 3.872
+rapidity_low[data]  = 0.0
+rapidity_high[data] = 0.75
+print_first_lines(data ,experiment[data] ,particle_type[data] ,particle_mass[data] ,rapidity_low[data]  ,rapidity_high[data] )
+print('\tfloat br_X_JPsi2pi = 0.038;')
+data_points[data] = get_data('./store/HEPData-ins1495026-v1-Table_10.csv', 0, 11, 16, 0)
+print_last_lines()
+
 #print(len(data_points))
+
 
 
 # Writing the File
