@@ -36,7 +36,12 @@ Y is the measurement number. if the same experiment measured pions in 4 rapidity
 
 if an experiment measured the same particle twice or more (probably with different years, pT, y and integrated lumi) it would be good if you put them one after another. 
 
-Z is "0/1" low/high pT bin edge; 2 is the mean pT <-- this order is different in the database, it starts with mean pT, but keep mine; 3 is the cross-section or number; 4 is the statistical error (positive); 5 is a systematic error (positive); 6 is a systematic error (negative) if it is different from positive
+- Z is "0/1" low/high pT bin edge; 
+- 2 is the mean pT <-- this order is different in the database, it starts with mean pT, but keep mine; 
+- 3 is the cross-section or number; 
+- 4 is the statistical error (positive); 
+- 5 is a systematic error (positive); 
+- 6 is a systematic error (negative) if it is different from positive
 
 if there is a scaling error, do not write it, just throw it away
 
