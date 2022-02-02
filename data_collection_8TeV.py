@@ -112,7 +112,7 @@ particle_mass[data] = 3.0969
 rapidity_low[data]  = 3.0
 rapidity_high[data] = 3.5
 print_first_lines(data ,experiment[data] ,particle_type[data] ,particle_mass[data] ,rapidity_low[data]  ,rapidity_high[data] )
-data_points[data] = get_data('./store/HEPData-ins1230344-v1-Table_4_JPsi.csv', 28, 34, 34+14, 0)# 3<y<3.5
+data_points[data] = get_data('./store/HEPData-ins1230344-v1-Table_4_JPsi.csv', 0, 14, 28, 0)# 3<y<3.5
 print_last_lines()
 
 #P P --> UPSI(1/2/3S) < MU+ MU-> X 2.5<y<3
@@ -213,7 +213,7 @@ particle_mass[data] = 10.02326
 rapidity_low[data]  = 2.0
 rapidity_high[data] = 2.5
 print_first_lines(data ,experiment[data] ,particle_type[data] ,particle_mass[data] ,rapidity_low[data]  ,rapidity_high[data] )
-data_points[data] = get_data('./store/HEPData-ins1392456-v1-Table_12.csv', 0, 13, 42, 0) # 2s 2.5<y<3
+data_points[data] = get_data('./store/HEPData-ins1392456-v1-Table_12.csv', 0, 13, 42, 2) # 2s 2.5<y<3
 print_last_lines()
 
 data = 11

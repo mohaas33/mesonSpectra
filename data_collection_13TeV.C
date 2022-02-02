@@ -22,11 +22,11 @@ void data_collection_13TeV(){
 
     float cross = 6.02e7;
 
-    const int Nparts = 30;
+    const int Nparts = 24;
     const int Nvals = 7;
     int data;
-    //                           0  1  2  3  4  5  6  7    8  9  10 11 12 13 14 15 16   17 18 19 20 21 22 23   24 25 26 27   28 29 30 31 32 33 34   35 36 37 38   39 40 41 42   43 44 45 46        47 48 49
-    int npoints[Nparts] = { 18, 12, 13, 13, 14, 22, 10, 18, 18, 18, 22, 17, 22, 17, 2, 7, 4, 14, 14, 14, 18, 18, 17, 18, 16, 16, 15, 17 };
+    //                      0   1   2   3   4   5   6   7   8   9   10  11  12 13 14 15  16  17  18  19   20   21   22   23  
+    int npoints[Nparts] = { 18, 12, 13, 13, 22, 10, 18, 18, 18, 22, 17, 22, 17, 2, 7, 4, 14, 14, 14, 18,  17,  16,  15 , 14};
 
     int   experiment[Nparts];    // ATLAS = 0, CMS = 1, ALICE = 2, LHCb = 3.
     int   particle_type[Nparts]; // accordingt to pythia
@@ -46,7 +46,7 @@ void data_collection_13TeV(){
 	
     
     //==============
-	// ATLAS- Did not find any 13 TeV results
+	// ATLAS - E Shulga: Did not find any 13 TeV results for meson spectra.
 	//==============
 
 
@@ -56,8 +56,7 @@ void data_collection_13TeV(){
 	//==============
 	//===============================================================================================
 	//https://www.hepdata.net/record/ins1511865 Differential production cross sections of J/psi, psi(2s)
-	//P P --> JPSI < MU+ MU- > X
-
+	//P P --> JPSI < MU+ MU- > X | DSIG/DPT/DYRAP [NB]
 
 	data = 0;
 	experiment[data] = 2;
@@ -82,8 +81,9 @@ void data_collection_13TeV(){
 		pval[data][5][bin] = p205[bin];//*(p1[bin]-p0[bin]);
 		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
 	}
-	//P P --> PSI(2S) < MU+ MU- > X
 
+	//https://www.hepdata.net/record/ins1511865 Differential production cross sections of J/psi, psi(2s)
+	//P P --> PSI(2S) < MU+ MU- > X | DSIG/DPT/DYRAP [NB]
 
 	data = 1;
 	experiment[data] = 2;
@@ -108,6 +108,7 @@ void data_collection_13TeV(){
 		pval[data][5][bin] = p415[bin];//*(p1[bin]-p0[bin]);
 		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
 	}
+
 	//===============================================================================================
 	//https://www.hepdata.net/record/ins1898832 Inclusive J/psi cross section.
 	//P P --> J/PSI <E+ E-> X | d2s/dpt dy [ub]
@@ -148,7 +149,7 @@ void data_collection_13TeV(){
 	particle_type[data] = 333;
 	particle_mass[data] = 1.019461;
 	rapidity_low[data]  = 2.5;
-	rapidity_high[data] = 2.75;
+	rapidity_high[data] = 3.0;
 	float m_nano = 1e6;
 	float p000[]={ 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 8.0 };
 	float p001[]={ 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 8.0, 10.0 };
@@ -158,38 +159,22 @@ void data_collection_13TeV(){
 	float p005[]={ 0.1041, 0.0310454, 0.0149742, 0.00926971, 0.00333931, 0.00140902, 0.00108017, 0.000974621, 0.000492227, 0.000436135, 0.000301372, 0.000106518, 5.85947e-05 };
 	float p006[]={ -0.000128068, -1.30455e-05, -3.58404e-06, -1.05374e-06, -3.73758e-07, -1.63275e-07, -7.51939e-08, -4.07222e-08, -2.27504e-08, -1.33206e-08, -9.15296e-09, -4.74487e-09, -1.51629e-09 };
 	float p007[]={ -0.1041, -0.0310454, -0.0149742, -0.00926971, -0.00333931, -0.00140902, -0.00108017, -0.000974621, -0.000492227, -0.000436135, -0.000301372, -0.000106518, -5.85947e-05 };
-	for (int bin = 0; bin < npoints[data]; bin++){
-		pval[data][0][bin] = p000[bin];
-		pval[data][1][bin] = p001[bin];
-		pval[data][2][bin] = p002[bin];
-		pval[data][3][bin] = p003[bin]*m_nano;//*(p1[bin]-p0[bin]);
-		pval[data][4][bin] = p004[bin]*m_nano;//*(p1[bin]-p0[bin]);
-		pval[data][5][bin] = p005[bin]*m_nano;//*(p1[bin]-p0[bin]);
-		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
-	}
 
-
-	data = 4;
-	experiment[data] = 2;
-	particle_type[data] = 333;
-	particle_mass[data] = 1.019461;
-	rapidity_low[data]  = 2.75;
-	rapidity_high[data] = 3.0;
-	float p010[]={ 1.25, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 8.0 };
-	float p011[]={ 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 8.0, 10.0 };
-	float p012[]={ 1.375, 1.75, 2.25, 2.75, 3.25, 3.75, 4.25, 4.75, 5.25, 5.75, 6.25, 6.75, 7.5, 9.0 };
-	float p013[]={ 0.755343, 0.485154, 0.268286, 0.136571, 0.0703336, 0.0403885, 0.0228822, 0.0136317, 0.00904232, 0.00524262, 0.00375788, 0.00243785, 0.00127467, 0.000388636 };
-	float p014[]={ 7.29883e-05, 1.07147e-05, 2.02818e-06, 5.64679e-07, 2.11494e-07, 9.23883e-08, 4.51397e-08, 2.52125e-08, 1.44767e-08, 8.89718e-09, 6.11325e-09, 3.88524e-09, 2.30567e-09, 6.12752e-10 };
-	float p015[]={ 0.155819, 0.0803065, 0.0256874, 0.0111535, 0.00515802, 0.00280335, 0.00144067, 0.00082964, 0.000693384, 0.000347707, 0.000252513, 0.000195284, 8.66955e-05, 3.92175e-05 };
-	float p016[]={ -7.29883e-05, -1.07147e-05, -2.02818e-06, -5.64679e-07, -2.11494e-07, -9.23883e-08, -4.51397e-08, -2.52125e-08, -1.44767e-08, -8.89718e-09, -6.11325e-09, -3.88524e-09, -2.30567e-09, -6.12752e-10 };
-	float p017[]={ -0.155819, -0.0803065, -0.0256874, -0.0111535, -0.00515802, -0.00280335, -0.00144067, -0.00082964, -0.000693384, -0.000347707, -0.000252513, -0.000195284, -8.66955e-05, -3.92175e-05 };
+	float p010[]={ /*1.25,*/ 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 8.0 };
+	float p011[]={ /*1.5,*/ 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 8.0, 10.0 };
+	float p012[]={ /*1.375,*/ 1.75, 2.25, 2.75, 3.25, 3.75, 4.25, 4.75, 5.25, 5.75, 6.25, 6.75, 7.5, 9.0 };
+	float p013[]={ /*0.755343,*/ 0.485154, 0.268286, 0.136571, 0.0703336, 0.0403885, 0.0228822, 0.0136317, 0.00904232, 0.00524262, 0.00375788, 0.00243785, 0.00127467, 0.000388636 };
+	float p014[]={ /*7.29883e-05,*/ 1.07147e-05, 2.02818e-06, 5.64679e-07, 2.11494e-07, 9.23883e-08, 4.51397e-08, 2.52125e-08, 1.44767e-08, 8.89718e-09, 6.11325e-09, 3.88524e-09, 2.30567e-09, 6.12752e-10 };
+	float p015[]={ /*0.155819,*/ 0.0803065, 0.0256874, 0.0111535, 0.00515802, 0.00280335, 0.00144067, 0.00082964, 0.000693384, 0.000347707, 0.000252513, 0.000195284, 8.66955e-05, 3.92175e-05 };
+	float p016[]={ /*-7.29883e-05,*/ -1.07147e-05, -2.02818e-06, -5.64679e-07, -2.11494e-07, -9.23883e-08, -4.51397e-08, -2.52125e-08, -1.44767e-08, -8.89718e-09, -6.11325e-09, -3.88524e-09, -2.30567e-09, -6.12752e-10 };
+	float p017[]={ /*-0.155819,*/ -0.0803065, -0.0256874, -0.0111535, -0.00515802, -0.00280335, -0.00144067, -0.00082964, -0.000693384, -0.000347707, -0.000252513, -0.000195284, -8.66955e-05, -3.92175e-05 };
 	for (int bin = 0; bin < npoints[data]; bin++){
 		pval[data][0][bin] = p010[bin];
 		pval[data][1][bin] = p011[bin];
 		pval[data][2][bin] = p012[bin];
-		pval[data][3][bin] = p013[bin]*m_nano;//*(p1[bin]-p0[bin]);
-		pval[data][4][bin] = p014[bin]*m_nano;//*(p1[bin]-p0[bin]);
-		pval[data][5][bin] = p015[bin]*m_nano;//*(p1[bin]-p0[bin]);
+		pval[data][3][bin] = (p013[bin]+p003[bin])/2*m_nano;//*(p1[bin]-p0[bin]);
+		pval[data][4][bin] = pow( pow(p014[bin],2)+pow(p004[bin],2) ,0.5 )*m_nano;//*(p1[bin]-p0[bin]);
+		pval[data][5][bin] = (p015[bin]+p005[bin])/2*m_nano;//*(p1[bin]-p0[bin]);
 		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
 	}
 
@@ -204,12 +189,13 @@ void data_collection_13TeV(){
 	//P P --> J/PSI(1S) < MU+ MU- > X | B*D2(SIG)/DPT/DYRAP [PB/GeV]
 
 
-	data = 5;
+	data = 4;
 	experiment[data] = 1;
 	particle_type[data] = 443;
 	particle_mass[data] = 3.0969;
 	rapidity_low[data]  = 0.0;
 	rapidity_high[data] = 1.2;
+    float p_nano = 1e-3;
 	float p430[]={ 20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 29.0, 30.0, 32.0, 34.0, 36.0, 38.0, 42.0, 46.0, 50.0, 60.0, 75.0, 95.0, 120.0 };
 	float p431[]={ 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 29.0, 30.0, 32.0, 34.0, 36.0, 38.0, 42.0, 46.0, 50.0, 60.0, 75.0, 95.0, 120.0, 150.0 };
 	float p432[]={ 20.5, 21.5, 22.5, 23.5, 24.5, 25.5, 26.5, 27.5, 28.5, 29.5, 31.0, 33.0, 35.0, 37.0, 39.8, 43.8, 47.8, 54.2, 66.0, 82.7, 104.7, 131.1 };
@@ -222,15 +208,16 @@ void data_collection_13TeV(){
 		pval[data][0][bin] = p430[bin];
 		pval[data][1][bin] = p431[bin];
 		pval[data][2][bin] = p432[bin];
-		pval[data][3][bin] = p433[bin];//*(p1[bin]-p0[bin]);
-		pval[data][4][bin] = p434[bin];//*(p1[bin]-p0[bin]);
-		pval[data][5][bin] = p435[bin];//*(p1[bin]-p0[bin]);
+		pval[data][3][bin] = p433[bin]*p_nano;//*(p1[bin]-p0[bin]);
+		pval[data][4][bin] = p433[bin]*p434[bin]*p_nano;//*(p1[bin]-p0[bin]);
+		pval[data][5][bin] = p433[bin]*p435[bin]*p_nano;//*(p1[bin]-p0[bin]);
 		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
 	}
+
+	//https://www.hepdata.net/record/ins1633431 Double-differential cross section times the dimuon branching fraction.
 	//P P --> PSI(2S) < MU+ MU- > X | B*D2(SIG)/DPT/DYRAP [PB/GeV]
 
-
-	data = 6;
+	data = 5;
 	experiment[data] = 1;
 	particle_type[data] = 100443;
 	particle_mass[data] = 3.6861;
@@ -248,15 +235,16 @@ void data_collection_13TeV(){
 		pval[data][0][bin] = p440[bin];
 		pval[data][1][bin] = p441[bin];
 		pval[data][2][bin] = p442[bin];
-		pval[data][3][bin] = p443[bin];//*(p1[bin]-p0[bin]);
-		pval[data][4][bin] = p444[bin];//*(p1[bin]-p0[bin]);
-		pval[data][5][bin] = p445[bin];//*(p1[bin]-p0[bin]);
+		pval[data][3][bin] = p443[bin]*p_nano;//*(p1[bin]-p0[bin]);
+		pval[data][4][bin] = p443[bin]*p444[bin]*p_nano;//*(p1[bin]-p0[bin]);
+		pval[data][5][bin] = p443[bin]*p445[bin]*p_nano;//*(p1[bin]-p0[bin]);
 		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
 	}
+
+	//https://www.hepdata.net/record/ins1633431 Double-differential cross section times the dimuon branching fraction.
 	//P P --> UPSI(1S) < MU+ MU- > X | B*D2(SIG)/DPT/DYRAP [PB/GeV]
 
-
-	data = 7;
+	data = 6;
 	experiment[data] = 1;
 	particle_type[data] = 553;
 	particle_mass[data] = 9.4603;
@@ -274,15 +262,16 @@ void data_collection_13TeV(){
 		pval[data][0][bin] = p700[bin];
 		pval[data][1][bin] = p701[bin];
 		pval[data][2][bin] = p702[bin];
-		pval[data][3][bin] = p703[bin];//*(p1[bin]-p0[bin]);
-		pval[data][4][bin] = p704[bin];//*(p1[bin]-p0[bin]);
-		pval[data][5][bin] = p705[bin];//*(p1[bin]-p0[bin]);
+		pval[data][3][bin] = p703[bin]*p_nano;//*(p1[bin]-p0[bin]);
+		pval[data][4][bin] = p703[bin]*p704[bin]*p_nano;//*(p1[bin]-p0[bin]);
+		pval[data][5][bin] = p703[bin]*p705[bin]*p_nano;//*(p1[bin]-p0[bin]);
 		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
 	}
+
+	//https://www.hepdata.net/record/ins1633431 Double-differential cross section times the dimuon branching fraction.
 	//P P --> UPSI(2S) < MU+ MU- > X | B*D2(SIG)/DPT/DYRAP [PB/GeV]
 
-
-	data = 8;
+	data = 7;
 	experiment[data] = 1;
 	particle_type[data] = 100553;
 	particle_mass[data] = 10.02326;
@@ -300,15 +289,16 @@ void data_collection_13TeV(){
 		pval[data][0][bin] = p800[bin];
 		pval[data][1][bin] = p801[bin];
 		pval[data][2][bin] = p802[bin];
-		pval[data][3][bin] = p803[bin];//*(p1[bin]-p0[bin]);
-		pval[data][4][bin] = p804[bin];//*(p1[bin]-p0[bin]);
-		pval[data][5][bin] = p805[bin];//*(p1[bin]-p0[bin]);
+		pval[data][3][bin] = p803[bin]*p_nano;//*(p1[bin]-p0[bin]);
+		pval[data][4][bin] = p803[bin]*p804[bin]*p_nano;//*(p1[bin]-p0[bin]);
+		pval[data][5][bin] = p803[bin]*p805[bin]*p_nano;//*(p1[bin]-p0[bin]);
 		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
 	}
+
+	//https://www.hepdata.net/record/ins1633431 Double-differential cross section times the dimuon branching fraction.
 	//P P --> UPSI(3S) < MU+ MU- > X | B*D2(SIG)/DPT/DYRAP [PB/GeV]
 
-
-	data = 9;
+	data = 8;
 	experiment[data] = 1;
 	particle_type[data] = 200553;
 	particle_mass[data] = 10.3552;
@@ -326,9 +316,9 @@ void data_collection_13TeV(){
 		pval[data][0][bin] = p900[bin];
 		pval[data][1][bin] = p901[bin];
 		pval[data][2][bin] = p902[bin];
-		pval[data][3][bin] = p903[bin];//*(p1[bin]-p0[bin]);
-		pval[data][4][bin] = p904[bin];//*(p1[bin]-p0[bin]);
-		pval[data][5][bin] = p905[bin];//*(p1[bin]-p0[bin]);
+		pval[data][3][bin] = p903[bin]*p_nano;//*(p1[bin]-p0[bin]);
+		pval[data][4][bin] = p903[bin]*p904[bin]*p_nano;//*(p1[bin]-p0[bin]);
+		pval[data][5][bin] = p903[bin]*p905[bin]*p_nano;//*(p1[bin]-p0[bin]);
 		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
 	}
 
@@ -339,7 +329,7 @@ void data_collection_13TeV(){
 	//P P --> PI+ X | (1/Nev)*D2(N)/DYRAP/DPT [GEV**-1]
 
 
-	data = 10;
+	data = 9;
 	experiment[data] = 1;
 	particle_type[data] = 211;
 	particle_mass[data] = 0.1395704;
@@ -364,10 +354,11 @@ void data_collection_13TeV(){
 	}
 
 
+	//https://www.hepdata.net/record/ins1608166 Transverse momentum distributions of identified charged hadrons (PI+/-, K+/-).
 	//P P --> K+ X | (1/Nev)*D2(N)/DYRAP/DPT [GEV**-1]
 
 
-	data = 11;
+	data = 10;
 	experiment[data] = 1;
 	particle_type[data] = 321;
 	particle_mass[data] = 0.493677;
@@ -393,10 +384,9 @@ void data_collection_13TeV(){
 
 
 
+	//https://www.hepdata.net/record/ins1608166 Transverse momentum distributions of identified charged hadrons (PI+/-, K+/-).
 	//P P --> PI- X | (1/Nev)*D2(N)/DYRAP/DPT [GEV**-1]
-
-
-	data = 12;
+	data = 11;
 	experiment[data] = 1;
 	particle_type[data] = 211;
 	particle_mass[data] = 0.1395704;
@@ -421,10 +411,9 @@ void data_collection_13TeV(){
 	}
 
 
+	//https://www.hepdata.net/record/ins1608166 Transverse momentum distributions of identified charged hadrons (PI+/-, K+/-).
 	//P P --> K- X | (1/Nev)*D2(N)/DYRAP/DPT [GEV**-1]
-
-
-	data = 13;
+	data = 12;
 	experiment[data] = 1;
 	particle_type[data] = 321;
 	particle_mass[data] = 0.493677;
@@ -453,9 +442,9 @@ void data_collection_13TeV(){
 	//===============================================================================================
 	//https://www.hepdata.net/record/ins1485195 B+ differential production cross sections DSIG/DPT for |yB|< 1.45 or |yB|< 2.1.
 	//P P --> B+ X| D(SIG(fiducial))/DPT [MUB/GEV]
+    //Combined stat+syst error 
 
-
-	data = 14;
+	data = 13;
 	experiment[data] = 1;
 	particle_type[data] = 521;
 	particle_mass[data] = 5.27963;
@@ -473,8 +462,8 @@ void data_collection_13TeV(){
 		pval[data][0][bin] = p500[bin];
 		pval[data][1][bin] = p501[bin];
 		pval[data][2][bin] = p502[bin];
-		pval[data][3][bin] = p503[bin];//*(p1[bin]-p0[bin]);
-		pval[data][4][bin] = p504[bin];//*(p1[bin]-p0[bin]);
+		pval[data][3][bin] = p503[bin]*u_nano;//*(p1[bin]-p0[bin]);
+		pval[data][4][bin] = p504[bin]*u_nano;//*(p1[bin]-p0[bin]);
 		pval[data][5][bin] = 0;//*(p1[bin]-p0[bin]);
 		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
 	}
@@ -482,7 +471,9 @@ void data_collection_13TeV(){
 
 
 
-	data = 15;
+	//https://www.hepdata.net/record/ins1485195 B+ differential production cross sections DSIG/DPT for |yB|< 1.45 or |yB|< 2.1.
+	//P P --> B+ X| D(SIG(fiducial))/DPT [MUB/GEV]
+	data = 14;
 	experiment[data] = 1;
 	particle_type[data] = 521;
 	particle_mass[data] = 5.27963;
@@ -500,8 +491,8 @@ void data_collection_13TeV(){
 		pval[data][0][bin] = p510[bin];
 		pval[data][1][bin] = p511[bin];
 		pval[data][2][bin] = p512[bin];
-		pval[data][3][bin] = p513[bin];//*(p1[bin]-p0[bin]);
-		pval[data][4][bin] = p514[bin];//*(p1[bin]-p0[bin]);
+		pval[data][3][bin] = p513[bin]*u_nano;//*(p1[bin]-p0[bin]);
+		pval[data][4][bin] = p514[bin]*u_nano;//*(p1[bin]-p0[bin]);
 		pval[data][5][bin] = 0;//*(p1[bin]-p0[bin]);
 		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
 	}
@@ -516,7 +507,7 @@ void data_collection_13TeV(){
 	//P P --> ETA_C(1S) < P+ P- > X | DSIG/DPT [NB/(GEV/c)]
 
 
-	data = 16;
+	data = 15;
 	experiment[data] = 3;
 	particle_type[data] = 441;
 	particle_mass[data] = 2.984;
@@ -542,12 +533,10 @@ void data_collection_13TeV(){
 
 	//===============================================================================================
 	//https://www.hepdata.net/record/ins1670013 Differential cross-sections multiplied by dimuon branching fractions for Y(1s/2s/3s).
-
-
 	//P P --> UPSI < MU+ MU- > X | DSIG/DPT PT [PB/GEV]
 
 
-	data = 17;
+	data = 16;
 	experiment[data] = 3;
 	particle_type[data] = 553;
 	particle_mass[data] = 9.4603;
@@ -565,16 +554,18 @@ void data_collection_13TeV(){
 		pval[data][0][bin] = p710[bin];
 		pval[data][1][bin] = p711[bin];
 		pval[data][2][bin] = p712[bin];
-		pval[data][3][bin] = p713[bin];//*(p1[bin]-p0[bin]);
-		pval[data][4][bin] = p714[bin];//*(p1[bin]-p0[bin]);
-		pval[data][5][bin] = p715[bin];//*(p1[bin]-p0[bin]);
+		pval[data][3][bin] = p713[bin]*p_nano;//*(p1[bin]-p0[bin]);
+		pval[data][4][bin] = p714[bin]*p_nano;//*(p1[bin]-p0[bin]);
+		pval[data][5][bin] = p715[bin]*p_nano;//*(p1[bin]-p0[bin]);
 		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
 	}
 
 
 
 
-	data = 18;
+	//https://www.hepdata.net/record/ins1670013 Differential cross-sections multiplied by dimuon branching fractions for Y(1s/2s/3s).
+	//P P --> UPSI < MU+ MU- > X | DSIG/DPT PT [PB/GEV]
+	data = 17;
 	experiment[data] = 3;
 	particle_type[data] = 100553;
 	particle_mass[data] = 10.02326;
@@ -592,16 +583,18 @@ void data_collection_13TeV(){
 		pval[data][0][bin] = p810[bin];
 		pval[data][1][bin] = p811[bin];
 		pval[data][2][bin] = p812[bin];
-		pval[data][3][bin] = p813[bin];//*(p1[bin]-p0[bin]);
-		pval[data][4][bin] = p814[bin];//*(p1[bin]-p0[bin]);
-		pval[data][5][bin] = p815[bin];//*(p1[bin]-p0[bin]);
+		pval[data][3][bin] = p813[bin]*p_nano;//*(p1[bin]-p0[bin]);
+		pval[data][4][bin] = p814[bin]*p_nano;//*(p1[bin]-p0[bin]);
+		pval[data][5][bin] = p815[bin]*p_nano;//*(p1[bin]-p0[bin]);
 		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
 	}
 
 
 
 
-	data = 19;
+	//https://www.hepdata.net/record/ins1670013 Differential cross-sections multiplied by dimuon branching fractions for Y(1s/2s/3s).
+	//P P --> UPSI < MU+ MU- > X | DSIG/DPT PT [PB/GEV]
+	data = 18;
 	experiment[data] = 3;
 	particle_type[data] = 200553;
 	particle_mass[data] = 10.3552;
@@ -619,9 +612,9 @@ void data_collection_13TeV(){
 		pval[data][0][bin] = p910[bin];
 		pval[data][1][bin] = p911[bin];
 		pval[data][2][bin] = p912[bin];
-		pval[data][3][bin] = p913[bin];//*(p1[bin]-p0[bin]);
-		pval[data][4][bin] = p914[bin];//*(p1[bin]-p0[bin]);
-		pval[data][5][bin] = p915[bin];//*(p1[bin]-p0[bin]);
+		pval[data][3][bin] = p913[bin]*p_nano;//*(p1[bin]-p0[bin]);
+		pval[data][4][bin] = p914[bin]*p_nano;//*(p1[bin]-p0[bin]);
+		pval[data][5][bin] = p915[bin]*p_nano;//*(p1[bin]-p0[bin]);
 		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
 	}
 
@@ -630,17 +623,15 @@ void data_collection_13TeV(){
 
 	//===============================================================================================
 	//https://www.hepdata.net/record/ins1396331 Differential production cross-sections for prompt D0/+/s+.
-
-
 	//P P --> D0 <K- PI+> X | D2SIG/DPT/DYRAP [MUB/(GEV/c)]
 
 
-	data = 20;
+	data = 19;
 	experiment[data] = 3;
 	particle_type[data] = 421;
 	particle_mass[data] = 1.86484;
 	rapidity_low[data]  = 2.0;
-	rapidity_high[data] = 2.5;
+	rapidity_high[data] = 3.0;
 	float p100[]={ 0.0, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0 };
 	float p101[]={ 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0 };
 	float p102[]={ 0.5, 1.25, 1.75, 2.25, 2.75, 3.25, 3.75, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5 };
@@ -649,25 +640,8 @@ void data_collection_13TeV(){
 	float p105[]={ 31.0, 50.0, 40.0, 24.0, 17.0, 11.4, 7.3, 4.7, 2.6, 1.3, 0.72, 0.46, 0.26, 0.18, 0.14, 0.12, 0.089, 0.058 };
 	float p106[]={ -2.0, -3.0, -2.0, -2.0, -1.0, -0.9, -0.6, -0.3, -0.2, -0.1, -0.09, -0.07, -0.06, -0.05, -0.04, -0.03, -0.026, -0.022 };
 	float p107[]={ -27.0, -45.0, -37.0, -28.0, -20.0, -13.0, -8.2, -4.2, -2.1, -1.2, -0.63, -0.39, -0.22, -0.16, -0.1, -0.08, -0.055, -0.03 };
-	for (int bin = 0; bin < npoints[data]; bin++){
-		pval[data][0][bin] = p100[bin];
-		pval[data][1][bin] = p101[bin];
-		pval[data][2][bin] = p102[bin];
-		pval[data][3][bin] = p103[bin];//*(p1[bin]-p0[bin]);
-		pval[data][4][bin] = p104[bin];//*(p1[bin]-p0[bin]);
-		pval[data][5][bin] = p105[bin];//*(p1[bin]-p0[bin]);
-		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
-	}
+									
 
-
-
-
-	data = 21;
-	experiment[data] = 3;
-	particle_type[data] = 421;
-	particle_mass[data] = 1.86484;
-	rapidity_low[data]  = 2.5;
-	rapidity_high[data] = 3.0;
 	float p110[]={ 0.0, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0 };
 	float p111[]={ 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0 };
 	float p112[]={ 0.5, 1.25, 1.75, 2.25, 2.75, 3.25, 3.75, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5 };
@@ -680,24 +654,25 @@ void data_collection_13TeV(){
 		pval[data][0][bin] = p110[bin];
 		pval[data][1][bin] = p111[bin];
 		pval[data][2][bin] = p112[bin];
-		pval[data][3][bin] = p113[bin];//*(p1[bin]-p0[bin]);
-		pval[data][4][bin] = p114[bin];//*(p1[bin]-p0[bin]);
-		pval[data][5][bin] = p115[bin];//*(p1[bin]-p0[bin]);
+		pval[data][3][bin] = (p113[bin]+p103[bin])/2 * u_nano;//*(p1[bin]-p0[bin]);
+		pval[data][4][bin] = pow( pow(p114[bin],2)+pow(p114[bin],2) , 0.5)/2 * u_nano;//*(p1[bin]-p0[bin]);
+		pval[data][5][bin] = (p115[bin]+p105[bin])/2 * u_nano;//*(p1[bin]-p0[bin]);
 		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
 	}
 
 
 
 
+	//https://www.hepdata.net/record/ins1396331 Differential production cross-sections for prompt D0/+/s+.
 	//P P --> D+ <K- PI+ PI+> X | D2SIG/DPT/DYRAP [MUB/(GEV/c)]
 
 
-	data = 22;
+	data = 20;
 	experiment[data] = 3;
 	particle_type[data] = 411;
 	particle_mass[data] = 1.86962;
 	rapidity_low[data]  = 2.0;
-	rapidity_high[data] = 2.5;
+	rapidity_high[data] = 3.0;
 	float p120[]={ 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0 };
 	float p121[]={ 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0 };
 	float p122[]={ 1.25, 1.75, 2.25, 2.75, 3.25, 3.75, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5 };
@@ -706,55 +681,39 @@ void data_collection_13TeV(){
 	float p125[]={ 47.0, 27.0, 18.0, 13.1, 8.8, 5.5, 3.2, 1.5, 0.76, 0.47, 0.31, 0.13, 0.098, 0.07, 0.049, 0.037, 0.028 };
 	float p126[]={ -7.0, -2.0, -1.0, -0.7, -0.5, -0.3, -0.2, -0.1, -0.07, -0.05, -0.04, -0.02, -0.02, -0.016, -0.012, -0.01, -0.008 };
 	float p127[]={ -42.0, -23.0, -16.0, -12.3, -8.6, -5.6, -3.7, -1.7, -0.84, -0.46, -0.25, -0.11, -0.081, -0.054, -0.033, -0.023, -0.014 };
-	for (int bin = 0; bin < npoints[data]; bin++){
-		pval[data][0][bin] = p120[bin];
-		pval[data][1][bin] = p121[bin];
-		pval[data][2][bin] = p122[bin];
-		pval[data][3][bin] = p123[bin];//*(p1[bin]-p0[bin]);
-		pval[data][4][bin] = p124[bin];//*(p1[bin]-p0[bin]);
-		pval[data][5][bin] = p125[bin];//*(p1[bin]-p0[bin]);
-		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
-	}
+	
 
 
-
-
-	data = 23;
-	experiment[data] = 3;
-	particle_type[data] = 411;
-	particle_mass[data] = 1.86962;
-	rapidity_low[data]  = 2.5;
-	rapidity_high[data] = 3.0;
-	float p130[]={ 0.0, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0 };
-	float p131[]={ 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0 };
-	float p132[]={ 0.5, 1.25, 1.75, 2.25, 2.75, 3.25, 3.75, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5 };
-	float p133[]={ 156.0, 170.0, 149.5, 126.1, 94.0, 66.7, 46.4, 28.22, 14.49, 7.39, 4.24, 2.63, 1.35, 0.97, 0.641, 0.443, 0.298, 0.212 };
-	float p134[]={ 6.0, 2.0, 0.8, 0.5, 0.3, 0.2, 0.2, 0.09, 0.06, 0.04, 0.03, 0.02, 0.01, 0.013, 0.011, 0.009, 0.007, 0.006 };
-	float p135[]={ 38.0, 31.0, 23.0, 16.4, 8.8, 6.0, 4.2, 2.35, 1.18, 0.59, 0.33, 0.21, 0.11, 0.072, 0.05, 0.036, 0.028, 0.022 };
-	float p136[]={ -6.0, -2.0, -0.8, -0.5, -0.3, -0.2, -0.2, -0.09, -0.06, -0.04, -0.03, -0.02, -0.01, -0.013, -0.011, -0.009, -0.007, -0.006 };
-	float p137[]={ -32.0, -22.0, -16.6, -12.9, -10.0, -6.6, -4.2, -2.34, -1.1, -0.54, -0.31, -0.19, -0.09, -0.061, -0.037, -0.025, -0.015, -0.009 };
+	float p130[]={ /*0.0,*/ 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0 };
+	float p131[]={ /*1.0,*/ 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0 };
+	float p132[]={ /*0.5,*/ 1.25, 1.75, 2.25, 2.75, 3.25, 3.75, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5 };
+	float p133[]={ /*156.0,*/ 170.0, 149.5, 126.1, 94.0, 66.7, 46.4, 28.22, 14.49, 7.39, 4.24, 2.63, 1.35, 0.97, 0.641, 0.443, 0.298, 0.212 };
+	float p134[]={ /*6.0,*/ 2.0, 0.8, 0.5, 0.3, 0.2, 0.2, 0.09, 0.06, 0.04, 0.03, 0.02, 0.01, 0.013, 0.011, 0.009, 0.007, 0.006 };
+	float p135[]={ /*38.0,*/ 31.0, 23.0, 16.4, 8.8, 6.0, 4.2, 2.35, 1.18, 0.59, 0.33, 0.21, 0.11, 0.072, 0.05, 0.036, 0.028, 0.022 };
+	float p136[]={ /*-6.0,*/ -2.0, -0.8, -0.5, -0.3, -0.2, -0.2, -0.09, -0.06, -0.04, -0.03, -0.02, -0.01, -0.013, -0.011, -0.009, -0.007, -0.006 };
+	float p137[]={ /*-32.0,*/ -22.0, -16.6, -12.9, -10.0, -6.6, -4.2, -2.34, -1.1, -0.54, -0.31, -0.19, -0.09, -0.061, -0.037, -0.025, -0.015, -0.009 };
 	for (int bin = 0; bin < npoints[data]; bin++){
 		pval[data][0][bin] = p130[bin];
 		pval[data][1][bin] = p131[bin];
 		pval[data][2][bin] = p132[bin];
-		pval[data][3][bin] = p133[bin];//*(p1[bin]-p0[bin]);
-		pval[data][4][bin] = p134[bin];//*(p1[bin]-p0[bin]);
-		pval[data][5][bin] = p135[bin];//*(p1[bin]-p0[bin]);
+		pval[data][3][bin] = (p133[bin]+p123[bin])/2 * u_nano;//*(p1[bin]-p0[bin]);
+		pval[data][4][bin] = pow( pow(p134[bin],2)+pow(p124[bin],2) ,0.5) * u_nano;//*(p1[bin]-p0[bin]);
+		pval[data][5][bin] = (p135[bin]+p125[bin])/2 * u_nano;//*(p1[bin]-p0[bin]);
 		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
 	}
 
 
 
 
+	//https://www.hepdata.net/record/ins1396331 Differential production cross-sections for prompt D0/+/s+.
 	//P P --> D/S+ <PHI <K- K+> PI+> X | D2SIG/DPT/DYRAP [MUB/(GEV/c)]
 
-
-	data = 24;
+	data = 21;
 	experiment[data] = 3;
 	particle_type[data] = 431;
 	particle_mass[data] = 1.96847;
 	rapidity_low[data]  = 2.0;
-	rapidity_high[data] = 2.5;
+	rapidity_high[data] = 3.0;
 	float p140[]={ 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0 };
 	float p141[]={ 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0 };
 	float p142[]={ 1.25, 1.75, 2.25, 2.75, 3.25, 3.75, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5 };
@@ -763,25 +722,9 @@ void data_collection_13TeV(){
 	float p145[]={ 15.0, 13.0, 11.0, 7.8, 4.9, 3.6, 1.8, 0.9, 0.44, 0.32, 0.17, 0.097, 0.063, 0.038, 0.03, 0.019 };
 	float p146[]={ -8.0, -3.0, -2.0, -1.1, -0.7, -0.5, -0.2, -0.2, -0.1, -0.08, -0.05, -0.036, -0.032, -0.025, -0.02, -0.016 };
 	float p147[]={ -13.0, -10.0, -9.0, -6.5, -4.2, -3.0, -1.6, -1.0, -0.46, -0.26, -0.14, -0.067, -0.037, -0.023, -0.016, -0.009 };
-	for (int bin = 0; bin < npoints[data]; bin++){
-		pval[data][0][bin] = p140[bin];
-		pval[data][1][bin] = p141[bin];
-		pval[data][2][bin] = p142[bin];
-		pval[data][3][bin] = p143[bin];//*(p1[bin]-p0[bin]);
-		pval[data][4][bin] = p144[bin];//*(p1[bin]-p0[bin]);
-		pval[data][5][bin] = p145[bin];//*(p1[bin]-p0[bin]);
-		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
-	}
 
 
 
-
-	data = 25;
-	experiment[data] = 3;
-	particle_type[data] = 431;
-	particle_mass[data] = 1.96847;
-	rapidity_low[data]  = 2.5;
-	rapidity_high[data] = 3.0;
 	float p150[]={ 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0 };
 	float p151[]={ 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0 };
 	float p152[]={ 1.25, 1.75, 2.25, 2.75, 3.25, 3.75, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5 };
@@ -794,24 +737,25 @@ void data_collection_13TeV(){
 		pval[data][0][bin] = p150[bin];
 		pval[data][1][bin] = p151[bin];
 		pval[data][2][bin] = p152[bin];
-		pval[data][3][bin] = p153[bin];//*(p1[bin]-p0[bin]);
-		pval[data][4][bin] = p154[bin];//*(p1[bin]-p0[bin]);
-		pval[data][5][bin] = p155[bin];//*(p1[bin]-p0[bin]);
+		pval[data][3][bin] = (p153[bin]+p143[bin])/2 * u_nano;//*(p1[bin]-p0[bin]);
+		pval[data][4][bin] = pow( pow(p154[bin],2)+pow(p144[bin],2),0.5)/2 * u_nano;//*(p1[bin]-p0[bin]);
+		pval[data][5][bin] = (p155[bin]+p145[bin])/2 * u_nano;//*(p1[bin]-p0[bin]);
 		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
 	}
 
 
 
 
+	//https://www.hepdata.net/record/ins1396331 Differential production cross-sections for prompt D0/+/s+.
 	//P P --> D*+ X | P P --> D*- X | D2SIG/DPT/DYRAP [MUB/(GEV/c)]
 
 
-	data = 26;
+	data = 22;
 	experiment[data] = 3;
 	particle_type[data] = 413;
 	particle_mass[data] = 2.01027;
 	rapidity_low[data]  = 2.0;
-	rapidity_high[data] = 2.5;
+	rapidity_high[data] = 3.0;
 	float p160[]={ 2.0, 2.5, 3.0, 3.5, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0 };
 	float p161[]={ 2.5, 3.0, 3.5, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0 };
 	float p162[]={ 2.25, 2.75, 3.25, 3.75, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5 };
@@ -820,40 +764,23 @@ void data_collection_13TeV(){
 	float p165[]={ 27.0, 13.0, 7.7, 5.3, 2.8, 1.4, 0.79, 0.46, 0.28, 0.12, 0.1, 0.065, 0.048, 0.043, 0.034 };
 	float p166[]={ -11.0, -3.0, -1.6, -1.0, -0.4, -0.2, -0.14, -0.09, -0.06, -0.03, -0.04, -0.027, -0.023, -0.02, -0.015 };
 	float p167[]={ -29.0, -14.0, -9.0, -6.1, -3.3, -1.6, -0.94, -0.54, -0.32, -0.13, -0.11, -0.069, -0.047, -0.037, -0.024 };
-	for (int bin = 0; bin < npoints[data]; bin++){
-		pval[data][0][bin] = p160[bin];
-		pval[data][1][bin] = p161[bin];
-		pval[data][2][bin] = p162[bin];
-		pval[data][3][bin] = p163[bin];//*(p1[bin]-p0[bin]);
-		pval[data][4][bin] = p164[bin];//*(p1[bin]-p0[bin]);
-		pval[data][5][bin] = p165[bin];//*(p1[bin]-p0[bin]);
-		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
-	}
 
 
-
-
-	data = 27;
-	experiment[data] = 3;
-	particle_type[data] = 413;
-	particle_mass[data] = 2.01027;
-	rapidity_low[data]  = 2.5;
-	rapidity_high[data] = 3.0;
-	float p170[]={ 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0 };
-	float p171[]={ 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0 };
-	float p172[]={ 1.25, 1.75, 2.25, 2.75, 3.25, 3.75, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5 };
-	float p173[]={ 124.0, 159.0, 123.0, 91.7, 65.2, 48.9, 27.8, 13.7, 7.83, 4.25, 2.53, 1.59, 1.034, 0.661, 0.491, 0.292, 0.248 };
-	float p174[]={ 5.0, 3.0, 1.0, 0.8, 0.5, 0.4, 0.2, 0.1, 0.07, 0.05, 0.04, 0.03, 0.025, 0.02, 0.017, 0.014, 0.014 };
-	float p175[]={ 16.0, 18.0, 15.0, 8.3, 5.6, 4.2, 2.3, 1.1, 0.64, 0.37, 0.22, 0.14, 0.089, 0.061, 0.047, 0.031, 0.026 };
-	float p176[]={ -5.0, -3.0, -1.0, -0.8, -0.5, -0.4, -0.2, -0.1, -0.07, -0.05, -0.04, -0.03, -0.025, -0.02, -0.017, -0.014, -0.014 };
-	float p177[]={ -17.0, -16.0, -10.0, -9.3, -6.6, -4.9, -2.7, -1.3, -0.73, -0.41, -0.23, -0.14, -0.083, -0.052, -0.036, -0.021, -0.016 };
+	float p170[]={ /*1.0, 1.5,*/ 2.0, 2.5, 3.0, 3.5, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0 };
+	float p171[]={ /*1.5, 2.0,*/ 2.5, 3.0, 3.5, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0 };
+	float p172[]={ /*1.25, 1.75,*/ 2.25, 2.75, 3.25, 3.75, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5 };
+	float p173[]={ /*124.0, 159.0,*/ 123.0, 91.7, 65.2, 48.9, 27.8, 13.7, 7.83, 4.25, 2.53, 1.59, 1.034, 0.661, 0.491, 0.292, 0.248 };
+	float p174[]={ /*5.0, 3.0,*/ 1.0, 0.8, 0.5, 0.4, 0.2, 0.1, 0.07, 0.05, 0.04, 0.03, 0.025, 0.02, 0.017, 0.014, 0.014 };
+	float p175[]={ /*16.0, 18.0,*/ 15.0, 8.3, 5.6, 4.2, 2.3, 1.1, 0.64, 0.37, 0.22, 0.14, 0.089, 0.061, 0.047, 0.031, 0.026 };
+	float p176[]={ /*-5.0, -3.0,*/ -1.0, -0.8, -0.5, -0.4, -0.2, -0.1, -0.07, -0.05, -0.04, -0.03, -0.025, -0.02, -0.017, -0.014, -0.014 };
+	float p177[]={ /*-17.0, -16.0,*/ -10.0, -9.3, -6.6, -4.9, -2.7, -1.3, -0.73, -0.41, -0.23, -0.14, -0.083, -0.052, -0.036, -0.021, -0.016 };
 	for (int bin = 0; bin < npoints[data]; bin++){
 		pval[data][0][bin] = p170[bin];
 		pval[data][1][bin] = p171[bin];
 		pval[data][2][bin] = p172[bin];
-		pval[data][3][bin] = p173[bin];//*(p1[bin]-p0[bin]);
-		pval[data][4][bin] = p174[bin];//*(p1[bin]-p0[bin]);
-		pval[data][5][bin] = p175[bin];//*(p1[bin]-p0[bin]);
+		pval[data][3][bin] = (p173[bin]+p163[bin])/2 * u_nano;//*(p1[bin]-p0[bin]);
+		pval[data][4][bin] = pow( pow(p174[bin],2)+pow(p164[bin],2), 0.5)/2 * u_nano;//*(p1[bin]-p0[bin]);
+		pval[data][5][bin] = (p175[bin]+p165[bin])/2 * u_nano;//*(p1[bin]-p0[bin]);
 		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
 	}
 
@@ -861,15 +788,14 @@ void data_collection_13TeV(){
 	//===============================================================================================
 	//https://www.hepdata.net/record/ins1391511 Double differential cross-section for prompt J/psi.
 
-
 	//P P --> J/PSI < MU+ MU- > X | D2SIG/DYRAP/DPT [NB/(GEV/c)]
 
-	data = 28;
+	data = 23;
 	experiment[data] = 3;
 	particle_type[data] = 443;
 	particle_mass[data] = 3.0969;
 	rapidity_low[data]  = 2.0;
-	rapidity_high[data] = 2.5;
+	rapidity_high[data] = 3.0;
 	float p210[]={ 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0 };
 	float p211[]={ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0 };
 	float p212[]={ 0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5 };
@@ -878,25 +804,8 @@ void data_collection_13TeV(){
 	float p215[]={ 44.0, 88.0, 75.0, 46.0, 28.0, 15.0, 8.6, 4.4, 2.5, 1.5, 1.0, 0.6, 0.4, 0.2 };
 	float p216[]={ -14.0, -20.0, -16.0, -11.0, -7.0, -5.0, -3.3, -2.1, -1.5, -1.1, -0.9, -0.7, -0.5, -0.4 };
 	float p217[]={ -44.0, -88.0, -75.0, -46.0, -28.0, -15.0, -8.6, -4.4, -2.5, -1.5, -1.0, -0.6, -0.4, -0.2 };
-	for (int bin = 0; bin < npoints[data]; bin++){
-		pval[data][0][bin] = p210[bin];
-		pval[data][1][bin] = p211[bin];
-		pval[data][2][bin] = p212[bin];
-		pval[data][3][bin] = p213[bin];//*(p1[bin]-p0[bin]);
-		pval[data][4][bin] = p214[bin];//*(p1[bin]-p0[bin]);
-		pval[data][5][bin] = p215[bin];//*(p1[bin]-p0[bin]);
-		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
-	}
 
 
-
-
-	data = 29;
-	experiment[data] = 3;
-	particle_type[data] = 443;
-	particle_mass[data] = 3.0969;
-	rapidity_low[data]  = 2.5;
-	rapidity_high[data] = 3.0;
 	float p220[]={ 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0 };
 	float p221[]={ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0 };
 	float p222[]={ 0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5 };
@@ -909,9 +818,9 @@ void data_collection_13TeV(){
 		pval[data][0][bin] = p220[bin];
 		pval[data][1][bin] = p221[bin];
 		pval[data][2][bin] = p222[bin];
-		pval[data][3][bin] = p223[bin];//*(p1[bin]-p0[bin]);
-		pval[data][4][bin] = p224[bin];//*(p1[bin]-p0[bin]);
-		pval[data][5][bin] = p225[bin];//*(p1[bin]-p0[bin]);
+		pval[data][3][bin] = (p223[bin]+p223[bin])/2;//*(p1[bin]-p0[bin]);
+		pval[data][4][bin] = pow( pow(p224[bin],2)+pow(p224[bin],2) , 0.5)/2;//*(p1[bin]-p0[bin]);
+		pval[data][5][bin] = (p225[bin]+p215[bin])/2;//*(p1[bin]-p0[bin]);
 		pval[data][6][bin] = -1*pval[data][5][bin];//*(p1[bin]-p0[bin]);
 	}
 
